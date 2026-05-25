@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="preloading">
+    <div id="splashScreen" class="splash-screen" aria-hidden="true">
+        <div class="logo-mark">🔐</div>
+        <div class="logo-text">Password Manager</div>
+    </div>
+    <header class="app-header">
+        <h1>Password Manager</h1>
+        <div class="header-actions">
+            <input type="text" id="searchInput" placeholder="Search..." aria-label="Search saved passwords">
+            <button id="themeToggle" aria-pressed="false">Dark Mode</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="card">
+            <h2>Add / Edit Password</h2>
+            <form id="passwordForm">
+                <div class="form-row">
+                    <label for="websiteInput">Website</label>
+                    <input type="text" id="websiteInput" required placeholder="e.g. example.com">
+                </div>
+                <div class="form-row">
+                    <label for="usernameInput">Username / Email</label>
+                    <input type="text" id="usernameInput" required placeholder="e.g. user@example.com">
+                </div>
+                <div class="form-row">
+                    <label for="passwordInput">Password</label>
+                    <div class="password-field">
+                        <input type="password" id="passwordInput" required>
+                        <button type="button" id="generatePassword">Generate</button>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" id="saveButton">Save Password</button>
+                    <button type="reset" id="cancelEdit" class="ghost" hidden>Cancel Edit</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="card">
+            <h2>Saved Passwords</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Website</th>
+                            <th>Username</th>
+                            <th>Password</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="passwordTableBody">
+                        <tr class="empty">
+                            <td colspan="4">No passwords saved yet.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <template id="passwordRowTemplate">
+        <tr>
+            <td class="website"></td>
+            <td class="username"></td>
+            <td class="password">
+                <span class="password-text"></span>
+                <button class="copy-btn" type="button">Copy</button>
+            </td>
+            <td class="actions">
+                <button class="edit-btn" type="button">Edit</button>
+                <button class="delete-btn" type="button">Delete</button>
+            </td>
+        </tr>
+    </template>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
+
